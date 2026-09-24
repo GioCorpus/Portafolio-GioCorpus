@@ -1,4 +1,6 @@
-import { projects, getSelectedProjects } from '../data';
+import fs from 'fs';
+
+const part1 = `import { projects, getSelectedProjects } from '../data';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from './ui/Card';
 import { Button } from './ui/Button';
 import { Badge } from './ui/Badge';
@@ -52,7 +54,9 @@ export function Projects({ mode = 'all' }: ProjectsProps) {
   const featuredProjects = projects.filter(p => p.featured);
   const otherProjects = getSelectedProjects();
 
-  return (
+  return (`;
+
+const part2 = `
     <section id="projects" className="px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 max-w-3xl">
@@ -182,3 +186,8 @@ function ProjectCard({ project }: { project: Project }) {
     </Card>
   );
 }
+`;
+`;`;
+
+fs.writeFileSync('src/components/Projects.tsx', part1 + part2);
+console.log('File written successfully');

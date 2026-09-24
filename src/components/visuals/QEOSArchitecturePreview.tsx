@@ -1,4 +1,5 @@
 import { cn } from '../../lib/utils';
+import { useIntersectionObserver, useStaggeredIntersection } from '../../hooks/useIntersectionObserver';
 
 export function QEOSArchitecturePreview() {
   const layers = [
@@ -12,8 +13,14 @@ export function QEOSArchitecturePreview() {
     { name: 'HARDWARE', color: 'accent-green' },
   ];
 
+  const { ref, isIntersecting } = useIntersectionObserver({
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px',
+    triggerOnce: true,
+  });
+
   return (
-    <div className="relative" aria-hidden="true">
+    <div ref={ref} className="relative" aria-hidden="true">
       <svg className="w-full h-full" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="qeosLineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
