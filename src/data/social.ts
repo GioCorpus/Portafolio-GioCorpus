@@ -2,7 +2,7 @@ import type { SocialLink, NavItem } from '../types';
 
 export const socialLinks: SocialLink[] = [
   { name: 'GitHub', url: 'https://github.com/GioCorpus', icon: 'github', color: '#24292e' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/giovannycorpus', icon: 'linkedin', color: '#0a66c2' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/giovanny-anthony-corpus-bernal-751524311/', icon: 'linkedin', color: '#0a66c2' },
   { name: 'Email', url: 'mailto:giovanny.corpus@gmail.com', icon: 'mail', color: '#ea4335' },
 ];
 

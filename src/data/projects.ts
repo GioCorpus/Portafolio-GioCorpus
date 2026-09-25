@@ -19,12 +19,13 @@ const tamayoHighlights: ProjectFeature[] = [
 ];
 
 const witchcraftHighlights: ProjectFeature[] = [
-  { title: 'Unreal Engine 5 Core', description: 'Gameplay systems built on UE5 with Enhanced Input, Gameplay Ability System (GAS), and Lyra foundation', status: 'prototype' },
-  { title: 'Nahual Transformation System', description: 'Character metamorphosis mechanics with state-driven ability sets and visual transitions', status: 'concept' },
-  { title: 'Tactical Combat Framework', description: 'Turn-based tactical combat with grid-based positioning, action economy, and affinity systems', status: 'prototype' },
-  { title: 'Bond/Affinity Mechanics', description: 'Relationship system affecting combat synergies, narrative branches, and character progression', status: 'concept' },
-  { title: 'Branching Narrative Architecture', description: 'Dialogue graph with condition-based branching, persistent choices, and multiple endings', status: 'concept' },
-  { title: 'Development Platform', description: 'React + FastAPI + MongoDB tooling for content authoring, telemetry, and live ops', status: 'experimental' },
+  { title: 'Project Documentation Platform', description: 'Full-stack React 19 + FastAPI + MongoDB platform for technical specs, game mechanics catalog, publisher pitch deck, development dashboard, and concept art gallery', status: 'implemented' },
+  { title: 'Tactical Combat Design', description: 'Turn-based tactical combat with grid-based positioning, action economy, and affinity systems — documented as design specification', status: 'concept' },
+  { title: 'Nahual Transformation Design', description: 'Character metamorphosis mechanics with state-driven ability sets, stat modification, and elemental affinity shifts — documented as design specification', status: 'concept' },
+  { title: 'Magic/Ability System Design', description: 'Elemental affinities, counter-magic mechanics, spell synchronization for combo effects — documented as design specification', status: 'concept' },
+  { title: 'Progression & Bonds Design', description: 'Class evolution trees, skill inheritance, experience curves, bond matrix with combat synergy unlocks — documented as design specification', status: 'concept' },
+  { title: 'Branching Narrative Design', description: 'Dialogue graph with Ink integration, moral choices affecting human/nahual affinity, multiple endings — documented as design specification', status: 'concept' },
+  { title: 'Unity 6 Game Runtime', description: 'Target engine for tactical SRPG implementation — no Unity project currently exists', status: 'roadmap' },
 ];
 
 const quantumBrowserHighlights: ProjectFeature[] = [

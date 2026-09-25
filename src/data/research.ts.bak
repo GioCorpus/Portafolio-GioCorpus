@@ -1,0 +1,130 @@
+export type ResearchMaturity =
+  | 'implemented'
+  | 'prototype'
+  | 'experimental'
+  | 'research'
+  | 'concept'
+  | 'roadmap';
+
+export type EvidenceType =
+  | 'source-code'
+  | 'test'
+  | 'simulation'
+  | 'benchmark'
+  | 'experiment'
+  | 'design-document'
+  | 'research-note'
+  | 'external-reference'
+  | 'roadmap';
+
+export type ScientificClassification =
+  | 'observed'
+  | 'simulated'
+  | 'implemented-in-software'
+  | 'hypothesized'
+  | 'designed'
+  | 'referenced-from-external-research'
+  | 'not-yet-verified';
+
+export interface ResearchTopic {
+  slug: string;
+  title: string;
+  question: string;
+  summary: string;
+  maturity: ResearchMaturity;
+  evidenceTypes: EvidenceType[];
+  scientificClassification: ScientificClassification;
+  project?: string;
+  repository?: string;
+  sourceFiles?: string[];
+  findings?: string[];
+  limitations?: string[];
+  futureQuestions?: string[];
+  confidence: 'high' | 'medium' | 'low';
+  portfolioSafeWording: string;
+}
+
+export const researchTopics: ResearchTopic[] = [
+  {
+    slug: 'qeos-capability-os',
+    title: 'Capability-Based OS Architecture for Heterogeneous Computing',
+    question: 'How can a clean-slate Rust OS provide coherent abstractions across classical, quantum, and energy domains?',
+    summary: 'QEOS implements a capability-based microkernel with typed memory management, IPC channels, scheduler, and service framework. The kernel compiles and tests pass in CI, but it is not a runnable OS — no userspace, filesystem, network stack, or hardware drivers.',
+    maturity: 'implemented',
+    evidenceTypes: ['source-code', 'test'],
+    scientificClassification: 'implemented-in-software',
+    project: 'QuantumEnergyOS V.04',
+    repository: 'https://github.com/GioCorpus/QuantumEnergyOS-V.04',
+    sourceFiles: [
+      'kernel/src/lib.rs',
+      'kernel/src/memory/',
+      'kernel/src/ipc/',
+      'kernel/src/scheduler/',
+      'kernel/src/security/',
+      'kernel/src/process/',
+      'kernel/src/syscall/',
+      'crates/system-core/'
+    ],
+    findings: [
+      'Typed PhysAddr/VirtAddr with multi-level page tables',
+      'Capability-based IPC with channel/endpoint/message',
+      'Priority-based scheduler with per-CPU runqueues',
+      'Service framework with lifecycle, bus, gateway'
+    ],
+    limitations: [
+      'Not a runnable OS — no userspace/fs/net/drivers',
+      'No formal verification of memory safety',
+      'Unsafe code exists for hardware interaction',
+      'x86_64 UEFI only; ARM/RISC-V not implemented'
+    ],
+    futureQuestions: [
+      'Can capability model express quantum resource constraints?',
+      'How to integrate userspace without breaking invariants?',
+      'What formal methods could verify kernel properties?'
+    ],
+    confidence: 'high',
+    portfolioSafeWording: 'QEOS implements a capability-based microkernel architecture in Rust with typed memory management, IPC channels, and a service framework. It is a research-grade systems prototype, not a runnable operating system.'
+  },
+  {
+    slug: 'qeos-qpu-runtime',
+    title: 'QPU Runtime & Quantum Simulation',
+    question: 'How should an OS/runtime expose heterogeneous quantum backends through a stable abstraction?',
+    summary: 'QEOS quantum-runtime crate provides a 19-module runtime with backend abstraction (Simulation, Emulation, Remote, Physical), circuit representation, compiler pipeline, job scheduler, QPU device abstraction, surface code error correction, and Majorana simulation. All quantum claims are explicitly simulation-only.',
+    maturity: 'prototype',
+    evidenceTypes: ['source-code', 'simulation'],
+    scientificClassification: 'implemented-in-software',
+    project: 'QuantumEnergyOS V.04',
+    repository: 'https://github.com/GioCorpus/QuantumEnergyOS-V.04',
+    sourceFiles: [
+      'crates/quantum-runtime/src/backend.rs',
+      'crates/quantum-runtime/src/circuit.rs',
+      'crates/quantum-runtime/src/compiler.rs',
+      'crates/quantum-runtime/src/scheduler.rs',
+      'crates/quantum-runtime/src/simulator.rs',
+      'crates/quantum-runtime/src/qpu_device.rs',
+      'crates/quantum-runtime/src/job.rs',
+      'crates/quantum-runtime/src/error_correction.rs',
+      'crates/quantum-runtime/src/capabilities.rs',
+      'crates/quantum-hal/',
+      'crates/qeos-qpu/'
+    ],
+    findings: [
+      'LocalSimulatorBackend implemented and runs in CI',
+      'Backend model: Simulation, Emulation, Remote, Physical',
+      'Surface code error correction with adaptive syndrome extraction',
+      'Quantum HAL and QPU interface crates exist'
+    ],
+    limitations: [
+      'No physical QPU ever tested — simulation only',
+      'MajoranaBackend is a stub, capability-gated, disabled',
+      'Error correction not benchmarked (3.2x claim unverified)',
+      'No quantum volume or randomized benchmarking',
+      'Physical QPU access behind documented adapter boundary only'
+    ],
+    futureQuestions: [
+      'How to benchmark simulator fidelity against physical devices?',
+      'Can backend abstraction support real-time quantum control?',
+      'What noise models are needed for realistic simulation?'
+    ],
+    }
+];

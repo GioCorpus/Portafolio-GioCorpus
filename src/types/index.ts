@@ -1,15 +1,16 @@
 export interface Language {
-  name: string;
-  level: 'native' | 'fluent' | 'intermediate' | 'basic';
-  description: string;
+  language: string;
+  proficiency: 'native' | 'fluent' | 'professional' | 'intermediate' | 'basic';
+  context?: string;
 }
 
 export interface Education {
-  degree: string;
   institution: string;
-  location: string;
+  program: string;
   period: string;
-  current: boolean;
+  status: 'completed' | 'in-progress' | 'planned';
+  location?: string;
+  details?: string[];
 }
 
 export interface Personal {

@@ -124,6 +124,7 @@ glm::vec2 scale = 1.0f + normalizedDepth * depthScaleFactor;`}
           </div>
         </div>
       </div>
+    </div>
     </section>
   );
 }

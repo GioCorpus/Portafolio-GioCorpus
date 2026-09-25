@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { personalInfo, socialLinks } from '../data';
+import { personal } from '../data/personal';
+import { socialLinks } from '../data/social';
 import { Button } from './ui/Button';
 import { Input } from './ui/Input';
 import { Textarea } from './ui/Textarea';
