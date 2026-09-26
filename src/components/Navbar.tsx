@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Terminal } from 'lucide-react';
 import { navItems } from '../data';
 import { cn } from '../lib/utils';
@@ -11,6 +11,8 @@ interface NavbarProps {
 export function Navbar({ activeSection, onNavigate }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -18,8 +20,46 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileOpen) {
+        setMobileOpen(false);
+        mobileMenuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [mobileOpen]);
+
+  // Focus management when mobile menu opens
+  useEffect(() => {
+    if (mobileOpen) {
+      setTimeout(() => {
+        const firstButton = mobileMenuRef.current?.querySelector('button, a') as HTMLElement;
+        firstButton?.focus();
+      }, 0);
+    }
+  }, [mobileOpen]);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (mobileOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(e.target as Node) && mobileMenuButtonRef.current && !mobileMenuButtonRef.current.contains(e.target as Node)) {
+        setMobileOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [mobileOpen]);
+
+  const handleMobileNavClick = (id: string) => {
+    onNavigate(id);
+    setMobileOpen(false);
+  };
+
   return (
-    <header className={cn('fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-dark-950/80 backdrop-blur-xl transition-all duration-300', scrolled && 'bg-dark-950/95 shadow-glow-cyan')}>
+<header className={cn('fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-dark-950/80 backdrop-blur-xl transition-all duration-300', scrolled && 'bg-dark-950/95 shadow-glow-cyan')}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
         <button onClick={() => onNavigate('hero')} className="group flex items-center gap-3" aria-label="Go to home">
           <div className="grid h-9 w-9 place-items-center rounded-lg border border-accent-cyan/30 bg-accent-cyan/5 text-accent-cyan group-hover:border-accent-cyan/50 group-hover:bg-accent-cyan/10 transition-all duration-300">
@@ -46,17 +86,17 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
             GitHub
           </a>
 
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden p-2 rounded-lg text-dark-400 hover:bg-dark-800/50 hover:text-white transition-colors" aria-label={mobileOpen ? 'Close menu' : 'Open menu'} aria-expanded={mobileOpen}>
+          <button ref={mobileMenuButtonRef} onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden p-2 rounded-lg text-dark-400 hover:bg-dark-800/50 hover:text-white transition-colors" aria-label={mobileOpen ? 'Close menu' : 'Open menu'} aria-expanded={mobileOpen} aria-controls="mobile-menu">
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden border-t border-white/5 bg-dark-950/95 backdrop-blur-xl py-4 px-4 animate-fade-in">
+        <div ref={mobileMenuRef} id="mobile-menu" className="md:hidden border-t border-white/5 bg-dark-950/95 backdrop-blur-xl py-4 px-4 animate-fade-in" role="dialog" aria-modal="true" aria-label="Mobile navigation">
           <nav className="flex flex-col gap-2" aria-label="Mobile navigation">
             {navItems.map((item) => (
-              <button key={item.id} onClick={() => onNavigate(item.id)} className={cn('w-full px-4 py-3 text-left text-sm font-mono tracking-wider uppercase transition-all duration-300 rounded-lg', activeSection === item.id ? 'bg-accent-cyan/10 text-accent-cyan' : 'text-dark-400 hover:bg-dark-800/50 hover:text-white')} aria-current={activeSection === item.id ? 'page' : undefined}>
+              <button key={item.id} onClick={() => handleMobileNavClick(item.id)} className={cn('w-full px-4 py-3 text-left text-sm font-mono tracking-wider uppercase transition-all duration-300 rounded-lg', activeSection === item.id ? 'bg-accent-cyan/10 text-accent-cyan' : 'text-dark-400 hover:bg-dark-800/50 hover:text-white')} aria-current={activeSection === item.id ? 'page' : undefined}>
                 {item.label}
               </button>
             ))}

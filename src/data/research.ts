@@ -126,8 +126,7 @@ export const researchTopics: ResearchTopic[] = [
       'Can backend abstraction support real-time quantum control?',
       'What noise models are needed for realistic simulation?'
     ],
-    }
-},
+  },
   {
     slug: 'qeos-majorana-simulation',
     title: 'Majorana / Topological Quantum Software Simulation',
@@ -166,8 +165,7 @@ export const researchTopics: ResearchTopic[] = [
     ],
     confidence: 'medium',
     portfolioSafeWording: 'Majorana simulation, tetron logical qubit structures, braiding adjacency operations, and topological state tracking implemented as software simulation. Explicitly simulation-only per ARCHITECTURE.md: "Majorana or topological quantum support is treated as a future adapter layer behind a stable QuantumProcessor trait. Physical access is never assumed."'
-  }
-},
+  },
 
   {
     slug: 'qeos-energy-telemetry',
@@ -210,8 +208,7 @@ export const researchTopics: ResearchTopic[] = [
     ],
     confidence: 'high',
     portfolioSafeWording: 'Lock-free SPSC ring buffer for high-frequency (1-10kHz) energy telemetry implemented in kernel and energy-telemetry crate. DVFS governor and carbon-aware scheduler are prototypes with mocked carbon API. No hardware RAPL/MSR integration yet.'
-  }
-},
+  },
 
   {
     slug: 'qeos-gpu-heterogeneous',
@@ -247,8 +244,7 @@ export const researchTopics: ResearchTopic[] = [
     ],
     confidence: 'low',
     portfolioSafeWording: 'Architecture defines heterogeneous compute model with HAL abstractions for CPU, GPU, and quantum backends. GPU and quantum backends are prototype/concept stage. Unified scheduling across accelerator types remains research.'
-  }
-},
+  },
 
   {
     slug: 'qeos-distributed-federation',
@@ -284,8 +280,7 @@ export const researchTopics: ResearchTopic[] = [
     ],
     confidence: 'low',
     portfolioSafeWording: 'Cluster federation architecture designed in ARCHITECTURE.md. qeos-cluster and qeos-node crates exist as Cargo.toml placeholders only. No implementation exists.'
-  }
-},
+  },
 
   {
     slug: 'quartz5d-visualization',
@@ -382,6 +377,22 @@ export interface ResearchExperiment {
   nextStep: string;
   status: 'supported' | 'not-supported' | 'inconclusive' | 'blocked' | 'not-yet-tested';
 }
+
+export interface ResearchPaper {
+  id: string;
+  title: string;
+  abstract: string;
+  authors: string[];
+  venue: string;
+  year: number;
+  doi?: string;
+  arxivId?: string;
+  githubUrl?: string;
+  tags: string[];
+  featured: boolean;
+}
+
+export const researchPapers: ResearchPaper[] = [];
 
 export const researchExperiments: ResearchExperiment[] = [
   {

@@ -9,6 +9,8 @@ import { WitchCraftCaseStudyPage } from '../pages/WitchCraftCaseStudyPage';
 import { AboutPage } from '../pages/AboutPage';
 import { ResumePage } from '../pages/ResumePage';
 import { ResearchPage } from '../pages/ResearchPage';
+import { ProjectsPage } from '../pages/ProjectsPage';
+import { ContactPage } from '../pages/ContactPage';
 
 export const router = createBrowserRouter([
   {
@@ -18,11 +20,13 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: 'about', element: <AboutPage /> },
-      { path: 'resume', element: <ResumePage /> },
-      { path: 'research', element: <ResearchPage /> },
+      { path: 'projects', element: <ProjectsPage /> },
       { path: 'projects/quantum-energy-os', element: <QEOSCaseStudyPage /> },
       { path: 'projects/tamayo', element: <TamayoCaseStudyPage /> },
       { path: 'projects/witchcraft', element: <WitchCraftCaseStudyPage /> },
+      { path: 'research', element: <ResearchPage /> },
+      { path: 'resume', element: <ResumePage /> },
+      { path: 'contact', element: <ContactPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

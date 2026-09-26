@@ -44,7 +44,50 @@ interface ResearchTopicCardProps {
 }
 
 export function ResearchTopicCard({ topic }: ResearchTopicCardProps) {
-{topic.findings && topic.findings.length > 0 && (
+  const maturity = maturityConfig[topic.maturity];
+
+  return (
+    <article className={cn('bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 transition-all duration-200 hover:border-neutral-700')}>
+      <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+        <div>
+          <h3 className="text-xl font-bold text-white mb-1">{topic.title}</h3>
+          <span className={cn('px-3 py-1 text-xs font-medium rounded-full border', maturity.bg, maturity.color)}>
+            {maturity.label}
+          </span>
+        </div>
+        <div className={cn('px-2 py-1 text-xs font-medium rounded border', confidenceColors[topic.confidence])}>
+          Confidence: {topic.confidence}
+        </div>
+      </div>
+
+      <p className="text-neutral-400 mb-4 leading-relaxed">{topic.summary}</p>
+
+      <div className="space-y-3 mb-4">
+        <div>
+          <h4 className="text-sm font-semibold text-neutral-300 mb-2">Research Question</h4>
+          <p className="text-neutral-400 text-sm italic">"{topic.question}"</p>
+        </div>
+
+        <div>
+          <h4 className="text-sm font-semibold text-neutral-300 mb-2">Scientific Classification</h4>
+          <span className={cn('px-2 py-1 text-xs font-medium rounded bg-neutral-800 border border-neutral-700 text-neutral-300')}>
+            {classificationLabels[topic.scientificClassification]}
+          </span>
+        </div>
+
+        <div>
+          <h4 className="text-sm font-semibold text-neutral-300 mb-2">Evidence Types</h4>
+          <div className="flex flex-wrap gap-1">
+            {topic.evidenceTypes.map((type, i) => (
+              <span key={i} className="px-2 py-0.5 text-xs bg-neutral-800 border border-neutral-700 rounded text-neutral-300 flex items-center gap-1">
+                {evidenceIcons[type]} {type.replace('-', ' ')}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {topic.findings && topic.findings.length > 0 && (
         <details className="mb-4 group">
           <summary className="cursor-pointer text-sm font-medium text-cyan-400 hover:text-cyan-300 flex items-center gap-2 mb-2">
             <span>Key Findings ({topic.findings.length})</span>
@@ -122,45 +165,3 @@ export function ResearchTopicCard({ topic }: ResearchTopicCardProps) {
 }
 
 export default ResearchTopicCard;
-  const maturity = maturityConfig[topic.maturity];
-
-  return (
-    <article className={cn('bg-neutral-900/50 border border-neutral-800 rounded-xl p-6 transition-all duration-200 hover:border-neutral-700')}>
-      <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-        <div>
-          <h3 className="text-xl font-bold text-white mb-1">{topic.title}</h3>
-          <span className={cn('px-3 py-1 text-xs font-medium rounded-full border', maturity.bg, maturity.color)}>
-            {maturity.label}
-          </span>
-        </div>
-        <div className={cn('px-2 py-1 text-xs font-medium rounded border', confidenceColors[topic.confidence])}>
-          Confidence: {topic.confidence}
-        </div>
-      </div>
-
-      <p className="text-neutral-400 mb-4 leading-relaxed">{topic.summary}</p>
-
-      <div className="space-y-3 mb-4">
-        <div>
-          <h4 className="text-sm font-semibold text-neutral-300 mb-2">Research Question</h4>
-          <p className="text-neutral-400 text-sm italic">"{topic.question}"</p>
-        </div>
-
-        <div>
-          <h4 className="text-sm font-semibold text-neutral-300 mb-2">Scientific Classification</h4>
-          <span className={cn('px-2 py-1 text-xs font-medium rounded bg-neutral-800 border border-neutral-700 text-neutral-300')}>
-            {classificationLabels[topic.scientificClassification]}
-          </span>
-        </div>
-
-        <div>
-          <h4 className="text-sm font-semibold text-neutral-300 mb-2">Evidence Types</h4>
-          <div className="flex flex-wrap gap-1">
-            {topic.evidenceTypes.map((type, i) => (
-              <span key={i} className="px-2 py-0.5 text-xs bg-neutral-800 border border-neutral-700 rounded text-neutral-300 flex items-center gap-1">
-                {evidenceIcons[type]} {type.replace('-', ' ')}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>

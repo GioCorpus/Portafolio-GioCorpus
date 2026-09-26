@@ -1,7 +1,8 @@
 import { personal, experience, techStack } from '../data';
 import { cn } from '../lib/utils';
-import { Briefcase, GraduationCap, FlaskConical, Code, Globe, Award, BookOpen, Download, Print } from 'lucide-react';
+import { Briefcase, GraduationCap, FlaskConical, Code, Globe, Award, BookOpen, Download, Printer } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import { SEO } from '../components/SEO';
 
 const typeIcons = {
   work: Briefcase,
@@ -112,7 +113,7 @@ export function ResumePage() {
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm" onClick={handlePrint}>
-              <Print className="w-4 h-4 mr-2" />
+              <Printer className="w-4 h-4 mr-2" />
               Print / Save as PDF
             </Button>
             <a

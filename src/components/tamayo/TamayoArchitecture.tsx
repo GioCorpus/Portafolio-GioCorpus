@@ -25,7 +25,7 @@ export function TamayoArchitecture() {
 |   Application | ---> |  EditorApp    | ---> |   Scene       |
 |   (main.cpp)  |      |  (CLI Editor) |      |   (Canvas,    |
 +---------------+      +---------------+      |    Layers,    |
-                                               |    Playback)  |
+                                                |    Playback)  |
         |                        |            +---------------+
         v                        v                     |
 +---------------+      +---------------+      +---------------+
@@ -48,7 +48,8 @@ export function TamayoArchitecture() {
                        +---------------+`}
             </pre>
           </div>
-<div className="prose prose-invert max-w-none">
+
+          <div className="prose prose-invert max-w-none">
             <h3 className="text-xl font-semibold text-cyan-400 mb-4">Core Library (tamayo_core)</h3>
             <p className="text-neutral-300 leading-relaxed">
               The <code>tamayo_core</code> static library contains all engine subsystems.
@@ -64,7 +65,7 @@ export function TamayoArchitecture() {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-neutral-800"><td className="p-2 font-mono">Transform</td><td className="p-2">Position, scale, rotation, anchor, matrix, lerp</td><td className="p-2">Transform, InterpolationType</td></tr>
+                <tr className="border-b border-neutral-800"><td className="p-2 font-mono">Transform</td><td className="p-2">Position, scale, rotation, anchor, matrix, lerp</td><td className="p-2">Transform, Anchor</td></tr>
                 <tr className="border-b border-neutral-800"><td className="p-2 font-mono">Keyframe</td><td className="p-2">Frame index, transform, interpolation, bezier handles</td><td className="p-2">Keyframe, InterpolationType</td></tr>
                 <tr className="border-b border-neutral-800"><td className="p-2 font-mono">Timeline</td><td className="p-2">Sorted keyframes, evaluation, frame/time conversion</td><td className="p-2">Timeline</td></tr>
                 <tr className="border-b border-neutral-800"><td className="p-2 font-mono">Layer</td><td className="p-2">zDepth, transform, timeline, hierarchy, blend mode</td><td className="p-2">Layer, BlendMode, LayerID</td></tr>
@@ -92,7 +93,9 @@ export function TamayoArchitecture() {
 };`}
               </pre>
             </div>
-<div className="prose prose-invert max-w-none">
+          </div>
+
+          <div className="prose prose-invert max-w-none">
             <h3 className="text-xl font-semibold text-cyan-400 mb-4">Engine Loop (EditorApp)</h3>
             <pre className="bg-neutral-900/50 border border-neutral-800 rounded-lg p-4 overflow-x-auto text-sm text-neutral-300">
 {`void EditorApp::update(float deltaTime) {

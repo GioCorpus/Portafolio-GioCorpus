@@ -23,35 +23,43 @@ import { QEOSCritique } from '../components/qeos/QEOSCritique';
 import { QEOSSummary } from '../components/qeos/QEOSSummary';
 import { CaseStudyLayout } from '../components/case-study/CaseStudyLayout';
 import { LocalNav } from '../components/case-study/LocalNav';
+import { SEO } from '../components/SEO';
 
 export function QEOSCaseStudyPage() {
   return (
-    <CaseStudyLayout>
-      <LocalNav />
-      <QEOSHero />
-      <QEOSOverview />
-      <QEOSArchitecture />
-      <QEOSKernel />
-      <QEOSMemory />
-      <QEOSHAL />
-      <QEOSDrivers />
-      <QEOSIPC />
-      <QEOSTelemetry />
-      <QEOSSecurity />
-      <QEOSPCIE />
-      <QEOSGPU />
-      <QEOSQuantum />
-      <QEOSEnergy />
-      <QEOSDashboard />
-      <QEOSCluster />
-      <QEOSObservability />
-      <QEOSTesting />
-      <QEOSDecisions />
-      <QEOSStatus />
-      <QEOSPhase3 />
-      <QEOSCritique />
-      <QEOSSummary />
-    </CaseStudyLayout>
+    <>
+      <SEO
+        title="QuantumEnergyOS V.04 | Case Study"
+        description="Capability-based microkernel OS for heterogeneous computing: Rust kernel, typed memory management, IPC channels, quantum runtime abstraction, energy telemetry. Research prototype — not a runnable OS."
+        path="/projects/quantum-energy-os"
+      />
+      <CaseStudyLayout>
+        <LocalNav />
+        <QEOSHero />
+        <QEOSOverview />
+        <QEOSArchitecture />
+        <QEOSKernel />
+        <QEOSMemory />
+        <QEOSHAL />
+        <QEOSDrivers />
+        <QEOSIPC />
+        <QEOSTelemetry />
+        <QEOSSecurity />
+        <QEOSPCIE />
+        <QEOSGPU />
+        <QEOSQuantum />
+        <QEOSEnergy />
+        <QEOSDashboard />
+        <QEOSCluster />
+        <QEOSObservability />
+        <QEOSTesting />
+        <QEOSDecisions />
+        <QEOSStatus />
+        <QEOSPhase3 />
+        <QEOSCritique />
+        <QEOSSummary />
+      </CaseStudyLayout>
+    </>
   );
 }
 

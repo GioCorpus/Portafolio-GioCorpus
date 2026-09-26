@@ -5,10 +5,16 @@ import { AboutIdentity } from '../components/about/AboutIdentity';
 import { AboutEvidence } from '../components/about/AboutEvidence';
 import { AboutDirection } from '../components/about/AboutDirection';
 import { personal } from '../data';
+import { SEO } from '../components/SEO';
 
 export function AboutPage() {
   return (
     <>
+      <SEO
+        title="About | Giovanny Corpus Bernal"
+        description="Software Engineer with over 20 years of hands-on experience across software development, Linux systems, automation, technical troubleshooting and secure data handling. Focused on Rust/C++ systems programming, backend and full-stack engineering, graphics technology, distributed systems and research-oriented computing."
+        path="/about"
+      />
       <AboutHero />
       <AboutExperience />
       <AboutPhilosophy />

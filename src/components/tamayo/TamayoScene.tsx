@@ -46,32 +46,6 @@ export function TamayoScene() {
               </tbody>
             </table>
           </div>
-<div className="prose prose-invert max-w-none">
-            <h3 className="text-xl font-semibold text-cyan-400 mb-4">Layer Ownership</h3>
-            <p className="text-neutral-300 leading-relaxed">
-              Scene owns all layers via <code>std::shared_ptr<Layer></code>. Layers are added
-              through <code>addLayer()</code> which assigns a unique <code>LayerID</code> (uint64_t).
-              The scene maintains a flat vector of layers; hierarchy is expressed through each layer's
-              <code>parentID</code> field, not through nested containers.
-            </p>
-            <div className="bg-neutral-900/30 border border-neutral-800 rounded-lg p-4 mt-4">
-              <h4 className="font-semibold text-violet-400 mb-2">Key Methods</h4>
-              <pre className="text-sm text-neutral-300">
-{`// Add layer to scene, returns assigned LayerID
-LayerID addLayer(std::shared_ptr<Layer> layer);
-
-// Remove layer by ID
-bool removeLayer(LayerID id);
-
-// Get layer by ID (const and non-const)
-std::shared_ptr<Layer> getLayer(LayerID id);
-const std::shared_ptr<Layer> getLayer(LayerID id) const;
-
-// Get all layers (for iteration)
-const std::vector<std::shared_ptr<Layer>>& getLayers() const;`}
-              </pre>
-            </div>
-          </div>
 
           <div className="prose prose-invert max-w-none">
             <h3 className="text-xl font-semibold text-cyan-400 mb-4">Depth Sorting</h3>
@@ -91,7 +65,8 @@ const std::vector<std::shared_ptr<Layer>>& getLayers() const;`}
 }`}
             </pre>
           </div>
-<div className="prose prose-invert max-w-none">
+
+          <div className="prose prose-invert max-w-none">
             <h3 className="text-xl font-semibold text-cyan-400 mb-4">Playback Control</h3>
             <p className="text-neutral-300 leading-relaxed">
               <code>EditorApp</code> manages playback state. The scene tracks the current frame
@@ -102,7 +77,7 @@ const std::vector<std::shared_ptr<Layer>>& getLayers() const;`}
               <pre className="text-sm text-neutral-300">
 {`// Current frame (0 to totalFrames-1)
 void setCurrentFrame(uint32_t frame);
-uint32_t getCurrentFrame() const;
+uint32_t getCurrentFrame();
 
 // Evaluate all layer timelines at current frame
 void evaluateCurrentFrame();

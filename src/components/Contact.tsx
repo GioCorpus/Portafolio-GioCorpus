@@ -12,11 +12,21 @@ const socialIcons = { github: Github, linkedin: Linkedin, twitter: Twitter, mail
 
 export function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error' | 'demo'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Check if Web3Forms key is configured
+    const web3formsKey = import.meta.env.VITE_WEB3FORMS_KEY;
+    if (!web3formsKey || web3formsKey === 'YOUR_WEB3FORMS_KEY') {
+      // Demo mode - form doesn't actually submit
+      setStatus('demo');
+      setErrorMessage('Demo mode: Form submission is disabled. Please use the email link below to contact me directly.');
+      return;
+    }
+
     setStatus('submitting');
     setErrorMessage('');
 
@@ -25,7 +35,7 @@ export function Contact() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: 'YOUR_WEB3FORMS_KEY',
+          access_key: web3formsKey,
           ...formData,
           subject: `Portfolio Contact: ${formData.subject}`,
         }),
@@ -122,6 +132,16 @@ function ContactForm({ handleSubmit, handleChange, formData, status, errorMessag
             <div className="mb-6 p-4 rounded-lg bg-red-500/20 border border-red-500/30 flex items-center gap-3 text-red-400 animate-fade-in">
               <AlertCircle className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
               <p className="text-sm">{errorMessage}</p>
+            </div>
+          )}
+
+          {status === 'demo' && (
+            <div className="mb-6 p-4 rounded-lg bg-amber-500/20 border border-amber-500/30 flex items-center gap-3 text-amber-400 animate-fade-in">
+              <AlertCircle className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+              <div>
+                <p className="font-medium">Demo Mode</p>
+                <p className="text-sm">{errorMessage}</p>
+              </div>
             </div>
           )}
 

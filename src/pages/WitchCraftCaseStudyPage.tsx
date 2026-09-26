@@ -18,30 +18,38 @@ import { WitchCraftRoadmap } from '../components/witchcraft/WitchCraftRoadmap';
 import { WitchCraftRepository } from '../components/witchcraft/WitchCraftRepository';
 import { CaseStudyLayout } from '../components/case-study/CaseStudyLayout';
 import { WitchCraftLocalNav } from '../components/witchcraft/WitchCraftLocalNav';
+import { SEO } from '../components/SEO';
 
 export function WitchCraftCaseStudyPage() {
   return (
-    <CaseStudyLayout>
-      <WitchCraftLocalNav />
-      <WitchCraftHero />
-      <WitchCraftOverview />
-      <WitchCraftArchitecture />
-      <WitchCraftGameSystems />
-      <WitchCraftCombat />
-      <WitchCraftGrid />
-      <WitchCraftTurns />
-      <WitchCraftMagic />
-      <WitchCraftNahual />
-      <WitchCraftProgression />
-      <WitchCraftAffinity />
-      <WitchCraftNarrative />
-      <WitchCraftUnity />
-      <WitchCraftPlatform />
-      <WitchCraftStatus />
-      <WitchCraftDecisions />
-      <WitchCraftRoadmap />
-      <WitchCraftRepository />
-    </CaseStudyLayout>
+    <>
+      <SEO
+        title="WitchCraft: Shamans & Nahuals | Case Study"
+        description="Tactical SRPG with Nahual transformation, affinity/bond systems, branching narrative. Design specification documented in React/FastAPI/MongoDB platform. Target: Unity 6 with GAS. No Unity project exists yet."
+        path="/projects/witchcraft"
+      />
+      <CaseStudyLayout>
+        <WitchCraftLocalNav />
+        <WitchCraftHero />
+        <WitchCraftOverview />
+        <WitchCraftArchitecture />
+        <WitchCraftGameSystems />
+        <WitchCraftCombat />
+        <WitchCraftGrid />
+        <WitchCraftTurns />
+        <WitchCraftMagic />
+        <WitchCraftNahual />
+        <WitchCraftProgression />
+        <WitchCraftAffinity />
+        <WitchCraftNarrative />
+        <WitchCraftUnity />
+        <WitchCraftPlatform />
+        <WitchCraftStatus />
+        <WitchCraftDecisions />
+        <WitchCraftRoadmap />
+        <WitchCraftRepository />
+      </CaseStudyLayout>
+    </>
   );
 }
 
