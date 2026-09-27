@@ -295,5 +295,93 @@ Complete professional profile system with canonical data sources, evidence-backe
 - `src/pages/ResumePage.tsx`
 - `src/components/Contact.tsx`
 
+## Canonical External Links Verification ✅ COMPLETE
+
+All external profile and project repository links have been centralized and verified against canonical data sources.
+
+### Profile Links (src/data/social.ts → src/data/personal.ts)
+
+| Link | Canonical URL | Status |
+|------|---------------|--------|
+| **LinkedIn** | `https://www.linkedin.com/in/giovanny-anthony-corpus-bernal-751524311/` | ✅ VERIFIED |
+| **Gmail Navigation** | `https://workspace.google.com/intl/en-US/gmail/` | ✅ VERIFIED |
+| **Email (action)** | `mailto:giovanny.corpus@gmail.com` | ✅ VERIFIED |
+| **Email (display)** | `giovanny.corpus@gmail.com` | ✅ PRESERVED |
+| **GitHub** | `https://github.com/GioCorpus` | ✅ VERIFIED |
+
+**Architecture**: Single source of truth in `social.ts` (`profileLinks` object with `emailHref` and `gmailUrl`), consumed by `personal.ts`, `Hero.tsx`, `Navbar.tsx`, `Footer.tsx`, `Contact.tsx`, `AboutPage.tsx`, `AboutDirection.tsx`, `RouteErrorPage.tsx`.
+
+### Email/Gmail Separation (2025-09-26)
+
+**Updated canonical contact model** to separate **Email** (direct compose action) from **Gmail** (Google Workspace landing page):
+
+- **`profileLinks.emailHref`**: `mailto:giovanny.corpus@gmail.com` — opens visitor's configured email client
+- **`profileLinks.gmailUrl`**: `https://workspace.google.com/intl/en-US/gmail/` — opens Gmail website in new tab
+- **`personal.emailHref`** / **`personal.gmailUrl`** — propagated to all components
+- **Contact actions exposed**: Email, LinkedIn, GitHub, Gmail (4 distinct actions)
+
+**Component updates**:
+- `Hero.tsx` — Added Email & Gmail buttons to HeroActions; HeroSocial renders both via `socialLinks`
+- `AboutPage.tsx` — Replaced single Gmail button with Email + Gmail buttons
+- `AboutDirection.tsx` — Added Email + Gmail buttons (Discuss Opportunities + Gmail)
+- `Contact.tsx` — Renders both via `socialLinks` (Email, LinkedIn, GitHub, Gmail)
+- `Footer.tsx` — Renders both via `socialLinks`
+- `RouteErrorPage.tsx` — Already uses `mailto:${personal.email}` for "Report the issue"
+
+**Semantic behavior**:
+- **Email**: `<a href="mailto:...">` — NO `target="_blank"`, lets browser/OS handle email client
+- **Gmail**: `<a href="..." target="_blank" rel="noopener noreferrer">` — standard external link behavior
+
+### Project Repository Links (src/data/projects.ts)
+
+| Project | Repository URL | Status |
+|---------|----------------|--------|
+| **Quantum Browser Platform** | `https://github.com/GioCorpus/quantum-energy-mobile` | ✅ VERIFIED |
+| **Quartz5D** | `https://github.com/GioCorpus/QuantumEnergyOS-V.04` | ✅ VERIFIED |
+| **BioCorpus** | `https://github.com/GioCorpus/Proyecto-BioCorpus` | ✅ VERIFIED |
+| **WitchCraft Studios** | `https://github.com/GioCorpus/documentaciondewitchcraftshamansandnahualspixelperfect` | ✅ VERIFIED |
+| **QuantumEnergyOS V.04** (flagship) | `https://github.com/GioCorpus/QuantumEnergyOS-V.04` | ✅ VERIFIED |
+| **Tamayo 2.5D Engine** (flagship) | `https://github.com/GioCorpus/Tamayo-Engine` | ✅ VERIFIED |
+| **WitchCraft: Shamans & Nahuals** (flagship) | `https://github.com/GioCorpus/WitchCraft` | ✅ VERIFIED |
+
+**Architecture**: Each `Project` record has optional `repository` field. Consumed by `ProjectCard` (Projects.tsx), `FlagshipProjectPanel`, `ProjectsPage` (Repositories section).
+
+### Stale/Placeholder Links Removed
+
+- ❌ No `linkedin.com/in/giovanny-corpus-bernal` (old URL) in production code
+- ❌ No `mailto:` on Gmail navigation button (uses Google Workspace URL as requested)
+- ❌ No `hello@example.com`, `hello@giocorpus.dev`, `#`, `javascript:void(0)` in user-facing UI
+- ❌ No derived repository URLs (`github.com/GioCorpus/${slug}`) — all explicit canonical data
+
+### Button/Link Behavior Verified
+
+| Component | Internal Routes | External URLs | Security |
+|-----------|-----------------|---------------|----------|
+| `ProjectCard` CODE button | — | `project.repository` | `target="_blank" rel="noopener noreferrer"` |
+| `FlagshipProjectPanel` CODE button | — | `project.repository` | `target="_blank" rel="noopener noreferrer"` |
+| `ProjectsPage` Repositories section | — | `project.repository` | `target="_blank" rel="noopener noreferrer"` |
+| `AboutEvidence` GitHub links | — | Hardcoded (matches canonical) | `target="_blank" rel="noopener noreferrer"` |
+| `Hero` social icons | — | `socialLinks` | `target="_blank" rel="noopener noreferrer"` |
+| `Navbar` GitHub link | — | `personal.github` | `target="_blank" rel="noopener noreferrer"` |
+| `Footer` social icons | — | `socialLinks` | `target="_blank" rel="noopener noreferrer"` |
+| `Contact` social links | — | `socialLinks` | `target="_blank" rel="noopener noreferrer"` |
+| Case Study buttons | React Router `Link` | — | N/A |
+
+### Accessibility
+
+- All external links have descriptive `aria-label` (e.g., `View Quantum Browser Platform on GitHub`)
+- Icons marked `aria-hidden="true"` where text label present
+- No invalid `<a><button>` or `<button><a>` nesting — uses `Button` with `onClick={() => window.open(url, '_blank')}` or plain `<a>` for external links
+
+### Regression Safety
+
+- ✅ No `undefined.icon` regression (defensive `?? []` fallbacks on `technologies`, `highlights`)
+- ✅ No `undefined.slice` regression (same)
+- ✅ TypeScript compile: **PASS**
+- ✅ Build: **PASS** (663.57 kB JS / 43.89 kB CSS)
+- ✅ Lint (`tsc --noEmit`): **PASS**
+
+---
+
 ### Status
-**MILESTONE 6 COMPLETE** — Professional profile system with canonical data sources, evidence-backed claims, and production-ready About/Resume/Contact pages. All TypeScript and lint checks pass.
+**CANONICAL LINKS UPDATE COMPLETE** — All external links centralized, verified, and consuming single source of truth. Production-ready.

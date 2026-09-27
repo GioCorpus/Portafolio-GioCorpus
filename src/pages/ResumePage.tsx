@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { personal, experience, techStack } from '../data';
 import { cn } from '../lib/utils';
 import { Briefcase, GraduationCap, FlaskConical, Code, Globe, Award, BookOpen, Download, Printer } from 'lucide-react';
@@ -241,7 +242,7 @@ export function ResumePage() {
             Career Timeline
           </h2>
           <p className="text-dark-400 text-center py-8">
-            View the interactive timeline on the <a href="/about" className="text-accent-cyan hover:underline">About page</a>.
+            View the interactive timeline on the <Link to="/about" className="text-accent-cyan hover:underline">About page</Link>.
           </p>
         </section>
       </main>

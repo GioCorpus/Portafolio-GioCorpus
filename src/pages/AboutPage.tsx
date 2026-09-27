@@ -31,10 +31,18 @@ export function AboutPage() {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <a
-                href={personal.email}
+                href={personal.emailHref}
                 className="inline-flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider bg-gradient-to-r from-accent-cyan to-accent-green text-dark-950 rounded-lg hover:opacity-90 transition-opacity"
               >
                 Email
+              </a>
+              <a
+                href={personal.gmailUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider bg-gradient-to-r from-accent-cyan to-accent-green text-dark-950 rounded-lg hover:opacity-90 transition-opacity"
+              >
+                Gmail
               </a>
               <a
                 href={personal.github}

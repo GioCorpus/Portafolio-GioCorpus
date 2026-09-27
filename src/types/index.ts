@@ -13,6 +13,13 @@ export interface Education {
   details?: string[];
 }
 
+export interface ProfileLinks {
+  github: string;
+  linkedin: string;
+  emailHref: string;
+  gmailUrl: string;
+}
+
 export interface Personal {
   name: string;
   title: string;
@@ -20,6 +27,8 @@ export interface Personal {
   bio: string;
   location: string;
   email: string;
+  emailHref: string;
+  gmailUrl: string;
   github: string;
   linkedin: string;
   cvUrl: string;

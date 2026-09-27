@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { cn } from '../../lib/utils';
 import { Code, Cpu, Globe, FileText, ExternalLink, ChevronRight } from 'lucide-react';
 
@@ -19,7 +20,7 @@ const flagshipProjects = [
     ],
     technologies: ['Rust', 'Quantum Computing', 'Kernel Development', 'UEFI', 'QEMU', 'Linux', 'VQE', 'QAOA', 'Distributed Systems'],
     links: {
-      github: 'https://github.com/GioCorpus/QuantumEnergyOS',
+      github: 'https://github.com/GioCorpus/QuantumEnergyOS-V.04',
       caseStudy: '/projects/quantum-energy-os',
     },
     evidenceFiles: ['ARCHITECTURE.md', 'KERNEL_DESIGN.md', 'QUANTUM_CONSENSUS.md', 'TELEMETRY.md'],
@@ -41,7 +42,7 @@ const flagshipProjects = [
     ],
     technologies: ['C++20', 'CMake', 'OpenGL', 'Animation Systems', 'Timeline Editor', 'Layer Composition', 'Scene Graph'],
     links: {
-      github: 'https://github.com/GioCorpus/Tamayo',
+      github: 'https://github.com/GioCorpus/Tamayo-Engine',
       caseStudy: '/projects/tamayo',
     },
     evidenceFiles: ['RENDERER.md', 'ANIMATION_SYSTEM.md', 'TIMELINE_EDITOR.md', 'SCENE_GRAPH.md'],
@@ -103,13 +104,13 @@ export function AboutEvidence() {
                   </div>
                 </div>
                 <div className="flex items-center gap-4 sm:shrink-0">
-                  <a
-                    href={project.links.caseStudy}
+                  <Link
+                    to={project.links.caseStudy}
                     className="inline-flex items-center gap-1 font-mono text-xs uppercase tracking-wider text-accent-cyan hover:text-accent-green transition-colors"
                   >
                     Case Study
                     <ChevronRight className="w-3 h-3" aria-hidden="true" />
-                  </a>
+                  </Link>
                   {project.links.github && (
                     <a
                       href={project.links.github}

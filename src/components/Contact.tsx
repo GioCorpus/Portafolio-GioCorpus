@@ -8,7 +8,7 @@ import { Card } from './ui/Card';
 import { Github, Linkedin, Twitter, Mail, Send, CheckCircle, AlertCircle, Loader2, ExternalLink } from 'lucide-react';
 import { cn } from '../lib/utils';
 
-const socialIcons = { github: Github, linkedin: Linkedin, twitter: Twitter, mail: Mail };
+const socialIcons = { github: Github, linkedin: Linkedin, twitter: Twitter, mail: Mail, gmail: Mail };
 
 export function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -92,7 +92,7 @@ function ContactInfo() {
               </div>
               <div>
                 <p className="font-mono text-xs uppercase tracking-wider text-dark-500">{social.name}</p>
-                <p className="text-sm text-white truncate max-w-xs">{social.url.replace(/^https?:\/\//, '')}</p>
+                <p className="text-sm text-white truncate max-w-xs">{social.name === 'Gmail' ? personal.email : social.url.replace(/^https?:\/\//, '')}</p>
               </div>
               <ExternalLink className="ml-auto w-5 h-5 text-dark-500 group-hover:text-accent-cyan transition-colors" aria-hidden="true" />
             </a>

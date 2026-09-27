@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { experience } from '../data';
 import { cn } from '../lib/utils';
 import { Briefcase, GraduationCap, FlaskConical, Calendar, MapPin, Code2 } from 'lucide-react';
@@ -150,13 +151,13 @@ export function ExperienceSnapshot() {
 
         <div className="mt-16 text-center">
           <p className="text-dark-400 mb-4">Full experience details and achievements available on the résumé page.</p>
-          <a
-            href="/resume"
+          <Link
+            to="/resume"
             className="inline-flex items-center gap-2 font-mono text-sm text-accent-cyan hover:text-accent-green transition-colors"
           >
             View Full Résumé
             <Code2 className="w-4 h-4" aria-hidden="true" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

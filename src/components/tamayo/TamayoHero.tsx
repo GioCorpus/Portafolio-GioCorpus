@@ -36,7 +36,7 @@ function StatusBadge({ status }: StatusBadgeProps) {
 
 export function TamayoHero() {
   const theme = getProjectTheme('tamayo');
-  const repoUrl = 'https://github.com/GioCorpus/Tamayo';
+  const repoUrl = 'https://github.com/GioCorpus/Tamayo-Engine';
 
   return (
     <header

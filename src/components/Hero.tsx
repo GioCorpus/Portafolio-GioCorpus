@@ -4,7 +4,7 @@ import { Button } from './ui/Button';
 import { cn } from '../lib/utils';
 import { EngineerProfilePanel } from './EngineerProfilePanel';
 
-const socialIcons = { github: Github, linkedin: Linkedin, mail: Mail };
+const socialIcons = { github: Github, linkedin: Linkedin, mail: Mail, gmail: Mail };
 
 export function Hero() {
   return (
@@ -53,13 +53,21 @@ function HeroActions() {
         Explore My Work
         <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
       </Button>
-      <Button variant="secondary" size="lg" onClick={() => window.open('https://github.com/GioCorpus', '_blank')}>
+      <Button variant="secondary" size="lg" onClick={() => window.open(personal.github, '_blank')} aria-label="View Giovanny's GitHub profile">
         <Github className="mr-2 w-4 h-4" aria-hidden="true" />
         GitHub
       </Button>
-      <Button variant="secondary" size="lg" onClick={() => window.open('https://linkedin.com/in/giovannycorpus', '_blank')}>
+      <Button variant="secondary" size="lg" onClick={() => window.open(personal.linkedin, '_blank')} aria-label="View Giovanny's LinkedIn profile">
         <Linkedin className="mr-2 w-4 h-4" aria-hidden="true" />
         LinkedIn
+      </Button>
+      <Button variant="secondary" size="lg" onClick={() => window.location.href = personal.emailHref} aria-label="Send an email to Giovanny Anthony Corpus Bernal">
+        <Mail className="mr-2 w-4 h-4" aria-hidden="true" />
+        Email
+      </Button>
+      <Button variant="secondary" size="lg" onClick={() => window.open(personal.gmailUrl, '_blank')} aria-label="Open Gmail">
+        <Mail className="mr-2 w-4 h-4" aria-hidden="true" />
+        Gmail
       </Button>
     </div>
   );

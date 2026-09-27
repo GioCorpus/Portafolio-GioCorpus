@@ -291,7 +291,7 @@ export const researchTopics: ResearchTopic[] = [
     evidenceTypes: ['external-reference'],
     scientificClassification: 'implemented-in-software',
     project: 'Quartz5D',
-    repository: 'https://github.com/GioCorpus/Quartz5D',
+    repository: 'https://github.com/GioCorpus/QuantumEnergyOS-V.04',
     sourceFiles: ['src/data/projects.ts (portfolio entry)'],
     findings: [
       'Portfolio entry describes 5D Data Visualization (experimental)',

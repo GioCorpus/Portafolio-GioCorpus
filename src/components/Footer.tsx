@@ -1,7 +1,7 @@
 import { socialLinks } from '../data';
 import { Github, Linkedin, Twitter, Mail, Heart, Code2, Terminal } from 'lucide-react';
 
-const socialIcons = { github: Github, linkedin: Linkedin, twitter: Twitter, mail: Mail };
+const socialIcons = { github: Github, linkedin: Linkedin, twitter: Twitter, mail: Mail, gmail: Mail };
 
 export function Footer() {
   const currentYear = new Date().getFullYear();

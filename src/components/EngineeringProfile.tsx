@@ -118,7 +118,7 @@ function EngineeringProfileDetails({ personal, coreSkills, currentFocus }: {
             <div key={i} className="flex items-center gap-3">
               <GraduationCap className="w-4 h-4 text-accent-cyan/70 flex-shrink-0" aria-hidden="true" />
               <div>
-                <p className="text-sm text-dark-300">{edu.degree}</p>
+                <p className="text-sm text-dark-300">{edu.program}</p>
                 <p className="text-xs text-dark-500">{edu.institution} · {edu.period}</p>
               </div>
             </div>
@@ -133,7 +133,7 @@ function EngineeringProfileDetails({ personal, coreSkills, currentFocus }: {
             <div key={i} className="flex items-center gap-3">
               <Languages className="w-4 h-4 text-accent-green/70 flex-shrink-0" aria-hidden="true" />
               <div>
-                <p className="text-sm text-dark-300">{lang.name} — {lang.description}</p>
+                <p className="text-sm text-dark-300">{lang.language} — {lang.context || lang.proficiency}</p>
               </div>
             </div>
           ))}

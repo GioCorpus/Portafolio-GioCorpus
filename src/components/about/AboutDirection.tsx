@@ -1,6 +1,7 @@
 import { careerDirection } from '../../data/career';
+import { personal } from '../../data';
 import { cn } from '../../lib/utils';
-import { Briefcase, Monitor, MapPin, Target, Clock, Globe, Shield, Sparkles, Cpu, Server, Code, FlaskConical } from 'lucide-react';
+import { Briefcase, Monitor, MapPin, Target, Clock, Globe, Shield, Sparkles, Cpu, Server, Code, FlaskConical, Mail } from 'lucide-react';
 const workModeIcons = {
   'Remote': Monitor,
   'Hybrid': Globe,
@@ -92,14 +93,23 @@ export function AboutDirection() {
             </div>
             <div className="flex flex-wrap items-center gap-4">
               <a
-                href="mailto:giovanny.corpus@gmail.com"
+                href={personal.emailHref}
                 className="inline-flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider bg-gradient-to-r from-accent-cyan to-accent-green text-dark-950 rounded-lg hover:opacity-90 transition-opacity"
               >
-                <Briefcase className="w-4 h-4" aria-hidden="true" />
+                <Mail className="w-4 h-4" aria-hidden="true" />
                 Discuss Opportunities
               </a>
               <a
-                href="https://github.com/GioCorpus"
+                href={personal.gmailUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider bg-gradient-to-r from-accent-cyan to-accent-green text-dark-950 rounded-lg hover:opacity-90 transition-opacity"
+              >
+                <Mail className="w-4 h-4" aria-hidden="true" />
+                Gmail
+              </a>
+              <a
+                href={personal.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider bg-white/5 border border-white/10 text-dark-300 rounded-lg hover:border-accent-cyan/30 hover:text-accent-cyan hover:bg-white/10 transition-colors"
