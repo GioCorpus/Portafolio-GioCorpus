@@ -385,3 +385,53 @@ All external profile and project repository links have been centralized and veri
 
 ### Status
 **CANONICAL LINKS UPDATE COMPLETE** — All external links centralized, verified, and consuming single source of truth. Production-ready.
+
+---
+
+## GitHub Pages Deployment Fix (2025-10-06)
+
+### Issue
+GitHub Actions workflow `actions/jekyll-build-pages@v1` failed with `Errno::ENOENT` attempting to build from non-existent `/docs` directory.
+
+### Root Cause
+GitHub Pages settings configured as "Deploy from a branch → /docs (Jekyll)" but this is a React + TypeScript + Vite SPA. No repository-controlled workflow existed — Jekyll was triggered by Pages settings.
+
+### Fix Applied
+
+| Area | Change |
+|------|--------|
+| **Vite Config** | HTML transform plugin for production URLs; base via CLI `--base=/Portafolio-GioCorpus/` |
+| **Package Scripts** | `build:github` with `cross-env VITE_SITE_URL=https://giocorpus.github.io/Portafolio-GioCorpus` |
+| **GitHub Actions** | `.github/workflows/deploy-pages.yml` — canonical Pages artifact deployment |
+| **SPA Fallback** | `public/404.html` (rafgraph/spa-github-pages redirect pattern) |
+| **Jekyll Prevention** | `public/.nojekyll` copied to `dist/` |
+| **HTML Template** | OG/Twitter meta tags use `.svg`; placeholder domain replaced at build |
+
+### Verification
+```
+npm run build:        PASS (local, base=/)
+npm run build:github: PASS (GitHub Pages, base=/Portafolio-GioCorpus/)
+npm run lint:         PASS (tsc --noEmit)
+TypeScript compile:   PASS
+```
+
+### dist/ Contents (GitHub Pages Build)
+- `index.html` — correct base paths, production OG URLs
+- `assets/index-*.js / index-*.css` — hashed, base-prefixed
+- `.nojekyll` — present
+- `404.html` — SPA redirect present
+- `favicon.svg, og-image.svg` — copied from public/
+
+### Manual GitHub Configuration Required
+**Repository → Settings → Pages → Build and deployment → Source**: Change from "Deploy from a branch" to **"GitHub Actions"**
+
+### Files Changed
+1. `vite.config.ts` — HTML transform plugin, base path handling
+2. `package.json` — `build:github` script, `cross-env` dependency
+3. `index.html` — OG/Twitter meta tags use `.svg`, placeholder domain
+4. `public/.nojekyll` — New file (empty)
+5. `public/404.html` — New SPA fallback
+6. `.github/workflows/deploy-pages.yml` — New canonical deployment workflow
+
+### Status
+**DEPLOYMENT ARCHITECTURE FIXED — AWAITING GITHUB PAGES SETTINGS CHANGE**

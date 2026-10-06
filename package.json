@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
+    "build:github": "cross-env VITE_SITE_URL=https://giocorpus.github.io/Portafolio-GioCorpus tsc --noEmit && cross-env VITE_SITE_URL=https://giocorpus.github.io/Portafolio-GioCorpus vite build --base=/Portafolio-GioCorpus/",
     "preview": "vite preview",
     "lint": "tsc --noEmit"
   },
@@ -20,6 +21,7 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "cross-env": "^10.1.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.16",
     "typescript": "^5.7.2",
