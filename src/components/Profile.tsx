@@ -5,21 +5,25 @@ import { Code2, BrainCircuit, Award, GraduationCap, Briefcase, FlaskConical } fr
 import { cn } from '../lib/utils';
 
 const categoryIcons = {
-  frontend: Code2,
+  languages: Code2,
+  systems: BrainCircuit,
   backend: BrainCircuit,
+  frontend: Code2,
+  graphics: BrainCircuit,
   devops: Briefcase,
   data: Code2,
   research: FlaskConical,
-  tools: Code2,
 };
 
 const categoryColors = {
-  frontend: 'accent-cyan',
+  languages: 'accent-cyan',
+  systems: 'accent-green',
   backend: 'accent-green',
+  frontend: 'accent-cyan',
+  graphics: 'accent-violet',
   devops: 'accent-amber',
   data: 'accent-cyan',
-  research: 'accent-green',
-  tools: 'accent-amber',
+  research: 'accent-violet',
 };
 
 const experienceIcons = {

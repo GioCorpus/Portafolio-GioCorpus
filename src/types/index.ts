@@ -58,7 +58,7 @@ export type SkillProficiency = 'expert' | 'advanced' | 'intermediate' | 'basic' 
 export interface Skill {
   name: string;
   proficiency: SkillProficiency;
-  category: 'frontend' | 'backend' | 'devops' | 'data' | 'research' | 'tools';
+  category: 'languages' | 'systems' | 'backend' | 'frontend' | 'graphics' | 'devops' | 'research' | 'data';
   icon?: string;
 }
 

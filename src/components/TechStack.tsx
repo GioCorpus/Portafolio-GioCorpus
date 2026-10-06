@@ -5,11 +5,12 @@ import { cn } from '../lib/utils';
 
 const categoryConfig = {
   language: { label: 'Languages', icon: '💻', color: 'accent-cyan' },
-  framework: { label: 'Frameworks', icon: '🔧', color: 'accent-green' },
-  tool: { label: 'Tools & Platforms', icon: '⚙️', color: 'accent-amber' },
-  database: { label: 'Databases', icon: '🗄️', color: 'accent-cyan' },
-  cloud: { label: 'Cloud', icon: '☁️', color: 'accent-green' },
-  research: { label: 'Quantum Research', icon: '⚛️', color: 'accent-amber' },
+  systems: { label: 'Systems & OS', icon: '🖥️', color: 'accent-green' },
+  backend: { label: 'Backend', icon: '🔧', color: 'accent-violet' },
+  frontend: { label: 'Frontend', icon: '⚛️', color: 'accent-amber' },
+  graphics: { label: 'Engine / Graphics', icon: '🎮', color: 'accent-amber' },
+  devops: { label: 'Cloud / DevOps', icon: '☁️', color: 'accent-green' },
+  research: { label: 'Quantum Research', icon: '⚛️', color: 'accent-violet' },
 };
 
 export function TechStack() {
@@ -54,10 +55,10 @@ export function TechStack() {
         </div>
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <StatCard label="Languages" value="5" icon="💻" color="accent-cyan" />
-          <StatCard label="Frameworks" value="4" icon="🔧" color="accent-green" />
-          <StatCard label="Tools & Platforms" value="6" icon="⚙️" color="accent-amber" />
-          <StatCard label="Quantum Research" value="4" icon="⚛️" color="accent-cyan" />
+          <StatCard label="Languages" value="8" icon="💻" color="accent-cyan" />
+          <StatCard label="Systems & OS" value="7" icon="🖥️" color="accent-green" />
+          <StatCard label="Engine / Graphics" value="9" icon="🎮" color="accent-amber" />
+          <StatCard label="Quantum Research" value="7" icon="⚛️" color="accent-violet" />
         </div>
       </div>
     </section>
