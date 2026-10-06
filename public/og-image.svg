@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#020617;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Subtle grid pattern -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.3">
+    <line x1="0" y1="157.5" x2="1200" y2="157.5"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472.5" x2="1200" y2="472.5"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+
+  <!-- Accent line -->
+  <rect x="100" y="180" width="1000" height="4" fill="url(#accent)" rx="2"/>
+
+  <!-- Name -->
+  <text x="600" y="260" font-family="Orbitron, monospace" font-size="56" font-weight="800" fill="white" text-anchor="middle" letter-spacing="2">GIOVANNY ANTHONY CORPUS BERNAL</text>
+
+  <!-- Titles -->
+  <text x="600" y="340" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="500" fill="#94a3b8" text-anchor="middle">SOFTWARE ENGINEER</text>
+  <text x="600" y="380" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="500" fill="#94a3b8" text-anchor="middle">SYSTEMS ENGINEER</text>
+  <text x="600" y="420" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="500" fill="#94a3b8" text-anchor="middle">ENGINE DEVELOPER</text>
+
+  <!-- Divider -->
+  <rect x="400" y="450" width="400" height="2" fill="url(#accent)" rx="1" opacity="0.5"/>
+
+  <!-- Tagline -->
+  <text x="600" y="495" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="400" fill="#64748b" text-anchor="middle" letter-spacing="1">Engineering · Systems · Research · Engine Technology</text>
+
+  <!-- Bottom accent -->
+  <rect x="100" y="550" width="1000" height="2" fill="url(#accent)" rx="1" opacity="0.3"/>
+</svg>

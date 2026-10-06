@@ -1,1 +1,1 @@
-feat: Complete QEOS case study with 23 technical sections
+'Add favicon and Open Graph metadata'  
