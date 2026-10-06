@@ -53,9 +53,11 @@ export interface PersonalInfo {
   languages?: Language[];
 }
 
+export type SkillProficiency = 'expert' | 'advanced' | 'intermediate' | 'basic' | 'learning';
+
 export interface Skill {
   name: string;
-  level: number;
+  proficiency: SkillProficiency;
   category: 'frontend' | 'backend' | 'devops' | 'data' | 'research' | 'tools';
   icon?: string;
 }
@@ -150,7 +152,7 @@ export interface TechStackItem {
   category: 'language' | 'framework' | 'tool' | 'database' | 'cloud' | 'research';
   icon: string;
   color: string;
-  proficiency: number;
+  proficiency: SkillProficiency;
 }
 
 export interface TimelineEvent {

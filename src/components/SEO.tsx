@@ -9,12 +9,20 @@ interface SEOProps {
   noIndex?: boolean;
 }
 
+// Site configuration - production domain should be set via VITE_SITE_URL env var at deploy time
+const getSiteConfig = () => {
+  const baseUrl = import.meta.env.VITE_SITE_URL || '';
+  return {
+    siteName: 'Giovanny Corpus Bernal | Systems Research Lab',
+    baseUrl,
+  };
+};
+
 export function SEO({ title, description, path, image, type = 'website', noIndex = false }: SEOProps) {
-  const siteName = 'Giovanny Corpus Bernal | Systems Research Lab';
+  const { siteName, baseUrl } = getSiteConfig();
   const fullTitle = `${title} | ${siteName}`;
-  const baseUrl = import.meta.env.PROD ? 'https://giovannycorpus.dev' : '';
   const url = path ? `${baseUrl}${path}` : baseUrl;
-  const ogImage = image || `${baseUrl}/og-image.png`;
+  const ogImage = image || (baseUrl ? `${baseUrl}/og-image.png` : '');
 
   useEffect(() => {
     document.title = fullTitle;
